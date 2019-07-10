@@ -49,7 +49,8 @@ If you're interested in playing with Espruino further...
 * Try the simple on-screen tutorial by clicking the book in the top right of the IDE,
 followed by `Tutorial`
 * See the normal Espruino intro at http://www.espruino.com/Quick+Start+Code
-* Check out your the Thingy:52 documentation and tutorials: http://www.espruino.com/Thingy52
+* Check out the Thingy:52 documentation and tutorials: http://www.espruino.com/Thingy52
+* Try the Graphical code editor - go to the Web IDE `Settings`->`General` and turn on `Nordic Thingy:52` under `Graphical Editor Extensions` - then click the `</>` icon at the bottom of the Web IDE window.
 
 ## Web Bluetooth Steps...
 
