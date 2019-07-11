@@ -15,6 +15,10 @@ We'll do this with the Espruino IDE.
 * First, go to http://www.espruino.com/ide **in an up to date Chrome Web Browser**
 * Click the connection icon in the top left
 
+Note: if using GNU/Linux you'll need to enable "experimental-web-platform-features" flag.
+
+(Track [status](https://github.com/WebBluetoothCG/web-bluetooth/blob/master/implementation-status.md))
+
 ![](img/webide1.png)
 
 * You should see `Web Bluetooth` - if you don't, check out [Espruino's Guide](http://www.espruino.com/Quick+Start+BLE#with-web-bluetooth) and if there's nothing useful there, seek help. We have a few USB dongles that'll work on older Macs and PCs.
