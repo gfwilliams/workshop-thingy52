@@ -54,7 +54,7 @@ For a quick run-down of commands for accessing the hardware, check out http://ww
 
 Try entering the following code:
 
-```
+```JS
 var flipped = false;
 
 Thingy.onAcceleration(function(xyz) {

@@ -64,7 +64,7 @@ and efficient.
 
 Copy the following code and paste it on to the left-hand side of the IDE.
 
-```
+```JS
 NRF.requestDevice({filters:[{name:"ENV"}]}).then(device => {
   console.log("Found device");
   console.log(device);
@@ -115,7 +115,7 @@ So, how do we get at our data? It's already been partially decoded for us into
 an ArrayBuffer. All we need to do is use either a `DataView` or `Uint16Array` to
 decode it into a 16 bit value again, and divide by 100:
 
-```
+```JS
 NRF.requestDevice({filters:[{name:"ENV"}]}).then(device => {
   // Sanity checks
   if (!device.serviceData ||
@@ -150,7 +150,7 @@ You could wrap it all up in a function, call it every few seconds using `setInte
 
 ... if you want to do something more interesting you could use an Espruino device with a display like [Pixl.js](http://www.espruino.com/Pixl.js) (or you could solder a display to a Thingy:52). I have a few Pixl devices at the front you can play with - and on a [Pixl.js](http://www.espruino.com/Pixl.js) you can run the following code to create a weather station:
 
-```
+```JS
 function scan() {
   NRF.requestDevice({filters:[{name:"ENV"}]}).then(device => {
     // Sanity checks
@@ -197,7 +197,7 @@ for you).
 
 The code I used is just as follows:
 
-```
+```JS
 // Get humidity/temp readings from the Thingy
 Thingy.onHumidity(function(hum) {
   // Bluetooth spec says data is 16 bits, 0.01/unit - so x100

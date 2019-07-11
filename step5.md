@@ -14,7 +14,7 @@ but in getting notified when a reading changes.
 * Connect to your Thingy with the Web IDE
 * Upload the following code:
 
-```
+```JS
 NRF.setServices({
     "7b340000-105b-2b38-3a74-2932f884e90e": {
       "7b340003-105b-2b38-3a74-2932f884e90e": {
@@ -102,44 +102,6 @@ function connect() {
 </script>
 </body>
 </html>
-```
-
-### How do you do this on the Bluetooth Peripheral?
-
-The code needed to handle this on the peripheral (which is being called when
-you choose the menu item) is simply:
-
-```JS
-NRF.setServices({
- "7b340000-105b-2b38-3a74-2932f884e90e" : {
-   "7b340003-105b-2b38-3a74-2932f884e90e" : {
-     readable : true,
-     notify : true,
-     value : [0,0,0]
-   }
- }
-},{uart:false});
-// Only start sending notifications a few seconds
-// after we're connected to.
-var started = false;
-NRF.on('connect',()=>{
- if (started) return;
- started = true;
- setTimeout(()=>{
-   // Update the service with new accelerometer data
-   setInterval(()=>{
-     var accel = NC.accel();
-     NRF.updateServices({
-       "7b340000-105b-2b38-3a74-2932f884e90e" : {
-         "7b340003-105b-2b38-3a74-2932f884e90e" : {
-           value : [accel.x*63,accel.y*63,accel.z*63],
-           notify: true
-         }
-       }
-     });
-   },200);
- }, 2000);
-});
 ```
 
 

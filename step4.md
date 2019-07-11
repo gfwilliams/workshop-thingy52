@@ -10,7 +10,7 @@ which creates a service which allows you to control the RGB LED.
 * Connect to your Thingy with the Web IDE
 * Upload the following code:
 
-```
+```JS
 NRF.setServices({
   "7b340000-105b-2b38-3a74-2932f884e90e": {
     "7b340001-105b-2b38-3a74-2932f884e90e": {
