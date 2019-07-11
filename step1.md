@@ -5,6 +5,8 @@ other devices - but also how to use Espruino on embedded devices to develop
 our own Bluetooth-enabled hardware.
 
 
+**Note:** Nordic Thingy:52 devices have been provided by [@NordicTweets](https://twitter.com/NordicTweets) - please let them know on Twitter if you enjoy using Espruino on their devices.
+
 ## Step 1 - Connecting
 
 The first step is to connect to your Thingy:52 via Web Bluetooth.
@@ -20,12 +22,13 @@ We'll do this with the Espruino IDE.
 ![](img/webide2.png)
 
 * Now it's time to set up the Thingy so you can connect to it.
-* Peel the rubber case of the Thingy:52 back where the USB connector is, and flip the switch:
+* Peel the rubber case of the Thingy:52 back where the USB connector is, and flip the switch while making sure you're not pressing the top of the Thingy (there's a switch there):
 
 ![](img/thingy1.jpg)
 
 ![](img/thingy2.jpg)
 
+* When the switch is in the 'on' position (away from USB) the Thingy should flash red for an instant.
 * Now put it close to your computer.
 * Click the connect icon in the top left of the IDE again, and click `Web Bluetooth`
 * You should see a bunch of devices - choose the one beginning with the word `Thingy `
@@ -33,14 +36,41 @@ which has the highest signal strength shown by it:
 
 ![](img/webide3.png)
 
-* Now you should be connected!
+* Now you should be connected! While connected your Thingy will stop advertising so won't appear in anyone else's Web Bluetooth connection screen.
 
 ![](img/webide4.png)
 
-* On the left-hand side of the IDE is a REPL where you can enter commands. There's
-Tab Completion which may help you.
-* On the right-hand side there's an editor. Ctrl-Space will autocomplete, including documentation on the various functions available.
+On the left-hand side of the IDE is a REPL where you can enter commands. There's
+Tab Completion and command history (using the up arrow) which may help you. Ctrl-C will clear the current line.
+
+On the right-hand side there's an editor. Ctrl-Space will autocomplete, including documentation on the various functions available.
 To upload code from the right-hand side, just click the 'Upload' button right in the middle of the IDE.
+
+* To check you've got the right Thingy, try entering a command like `LED1.set()/reset()` or `Thingy.beep()` in the REPL on the left and make sure it's your one that is affected!
+
+For a quick run-down of commands for accessing the hardware, check out http://www.espruino.com/Thingy52#on-board-peripherals
+
+## Using the Thingy
+
+Try entering the following code:
+
+```
+var flipped = false;
+
+Thingy.onAcceleration(function(xyz) {
+  var f = xyz.z < 0;
+  if (flipped!=f) Thingy.beep(f ? 100 : 200);
+  flipped = f;
+});
+```
+
+You can either copy/paste this into the REPL on the left, or into the editor and then click upload.
+
+Now if you flip the Thingy over it'll beep - with a different pitch depending on which way up it is.
+
+**Note:** if you're uploading code that `require`s modules that aren't built in to the device, you'll
+have to put that code on the right hand side and upload from there so the IDE is able to analyse your
+code and figure out what needs loading.
 
 ## Other stuff...
 
@@ -51,6 +81,7 @@ followed by `Tutorial`
 * See the normal Espruino intro at http://www.espruino.com/Quick+Start+Code
 * Check out the Thingy:52 documentation and tutorials: http://www.espruino.com/Thingy52
 * Try the Graphical code editor - go to the Web IDE `Settings`->`General` and turn on `Nordic Thingy:52` under `Graphical Editor Extensions` - then click the `</>` icon at the bottom of the Web IDE window.
+
 
 ## Web Bluetooth Steps...
 
