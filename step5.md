@@ -106,3 +106,6 @@ function connect() {
 
 
 ## That's it!
+
+You might also want to take a look at [Bluetooth HID](http://www.espruino.com/BLE+Keyboard)
+as you can make the Thingy:52 emulate a Bluetooth Keyboard.
